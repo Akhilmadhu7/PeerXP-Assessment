@@ -1,0 +1,156 @@
+{% extends 'myadmin/adminHeader.html' %}
+   
+   {% block content %}
+    
+
+     
+    <div class="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0 bg-sky-50">
+        <!-- <div>
+            <a href="/">
+                <h3 class="text-4xl font-bold text-purple-600">
+                    Logo
+                </h3>
+            </a>
+        </div> -->
+        <div class="w-full px-6 py-6 mt- overflow-hidden bg-slate-200 shadow-md sm:max-w-md sm:rounded-lg">
+            <form action="create-user" method="post">
+                    {% csrf_token %}
+                    <div>
+                        <label
+                        htmlFor="name"
+                        class="block text-sm font-medium text-gray-700 undefined"
+                        >
+                         Name
+                        </label>
+                        <div class="flex flex-col items-start">
+                            <input
+                                type="text"
+                                name="username"
+                                class="block w-full mt-1  py-1  border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            />
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <label
+                        htmlFor="email"
+                        class="block text-sm font-medium text-gray-700 undefined"
+                        >
+                        Email
+                        </label>
+                        <div class="flex flex-col items-start">
+                            <input
+                                type="email"
+                                name="email"
+                                class="block w-full mt-1 py-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            />
+                        </div>
+                    </div>
+                    
+                    
+                
+               
+                    <div class="mt-4">
+                        <label
+                        htmlFor="phone"
+                        class="block text-sm font-medium text-gray-700 undefined"
+                        >
+                         Mobile Number
+                        </label>
+                        <div class="flex flex-col items-start">
+                            <input
+                                type="number"
+                                name="phone_number"
+                                class="block w-full mt-1 py-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <label
+                        htmlFor="email"
+                        class="block text-sm font-medium text-gray-700 undefined"
+                        >
+                        Password
+                        </label>
+                        <div class="flex flex-col items-start">
+                            <input
+                                type="password"
+                                name="password"
+                                class="block w-full mt-1 py-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <label
+                        htmlFor="email"
+                        class="block text-sm font-medium text-gray-700 undefined"
+                        >
+                        Confirm Password
+                        </label>
+                        <div class="flex flex-col items-start">
+                            <input
+                                type="password"
+                                name="password2"
+                                class="block w-full mt-1 py-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            />
+                        </div>
+                    </div>
+               
+
+                
+                    <div class="mt-4">
+                        <label
+                        htmlFor="text"
+                        class="block text-sm font-medium text-gray-700 undefined"
+                        >
+                         Department
+                        </label>
+                        <div class="flex flex-col items-start">
+                            <!-- <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">degory name</label> -->
+                            <select name="department" id="department" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <option selected>Choose a Department</option>
+                                {% for d in department %}
+                            
+                            <option value="{{d.id}}">{{d.name}}</option>
+                            {% endfor %}
+                            </select>
+                            <!-- <input
+                                type="text"
+                                name="department"
+                                class="block w-full mt-1 py-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            /> -->
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <label
+                        htmlFor="text"
+                        class="block text-sm font-medium text-gray-700 undefined"
+                        >
+                        Role
+                        </label>
+                        <div class="flex flex-col items-start">
+                            <input
+                                type="text"
+                                name="role"
+                                class="block w-full mt-1 py-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            />
+                        </div>
+                    </div>
+                
+
+                
+                <div class="flex items-center justify-end mt-4">
+                    
+                    <button
+                        type="submit"
+                        class="inline-flex items-center px-4 py-2 ml-4 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-gray-900 border border-transparent rounded-md active:bg-gray-900 false"
+                    >
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock content %}
