@@ -6,7 +6,7 @@
 {% block content %}
 
 <!-- component -->
-<section class="bg-sky-50 min-h-screen">
+<section class="bg-sky-50 min-h-screen flex flex-col px-20 pt-20" >
 <div>
     <a href="create-department">
         <button class="bg-blue-500 text-white p-3 rouned-md">
@@ -23,6 +23,7 @@
     
 <section class="flex items-center justify-center">
 	<div class="container">
+		<div class=" max-h-screen overflow-y-scroll scrollbar-none">
 		<table class="w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5">
 			<thead class="text-white">
 				<tr class="bg-teal-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
@@ -38,16 +39,18 @@
                 
                 {% for d in department %}   
 				<tr class="flex flex-col flex-no wrap  text-center sm:table-row mb-2 sm:mb-0">
-					<td class="border-grey-light border hover:bg-gray-100 p-3">1</td>
+					<td class="border-grey-light border hover:bg-gray-100 p-3">{{forloop.counter}}</td>
 					<td class="border-grey-light border hover:bg-gray-100 p-3">{{d.name}}</td>
 					<td class="border-grey-light border hover:bg-gray-100 p-3 truncate">{{d.created_by}}</td>
 					<td class="border-grey-light border hover:bg-gray-100 p-3 truncate">{{d.description}}</td>
-					<td class="border-grey-light border hover:bg-gray-100 p-3 text-amber-500 hover:text-amber-600 hover:font-medium cursor-pointer"><a href="{% url 'edit-department' d.id %}">Edit</a></td>
-					<td class="border-grey-light border hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer"><a href="{% url 'delete-department' d.id %}">Delete</a></td>
+					<td class="border-grey-light border hover:bg-gray-100 p-3 text-amber-500 hover:text-amber-600 hover:font-medium cursor-pointer"><a href="{% url 'edit-department' d.id %}"><button type="button" onclick="return confirm('Do you want to Edit')">Edit</button></a></td>
+					<td class="border-grey-light border hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer"><a href="{% url 'delete-department' d.id %}"><button type="button" onclick="return confirm('Do you want to delete')">Delete</button></a></td>
 				</tr>
                 {% endfor %}
 
+
 			</tbody>
+		</div>
 		</table>
 	</div>
 </section>

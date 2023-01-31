@@ -10,6 +10,9 @@ urlpatterns = [
     path('department-list',department_list,name='department-list'),
     path('create-department',create_department,name='create-department'),
     path("edit-department/<int:id>",edit_department,name='edit-department'),
-    path('delete-department/<int:id>',delete_department,name='delete-department')
+    path('delete-department/<int:id>',delete_department,name='delete-department'),
+    path('create-ticket',create_ticket,name='create-ticket'),
+    path('tickets-list',tikcets_list,name='tickets-list'),
+    path('delete-ticket/<int:id>',delete_ticket,name='delete-ticket')
     
 ]

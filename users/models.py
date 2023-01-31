@@ -4,7 +4,7 @@ from django.contrib.auth.models import AbstractBaseUser,BaseUserManager,Permissi
 from Assessment.settings import AUTH_USER_MODEL
 
 class AccountManager(BaseUserManager):
-  def create_user(self,email,username ,phone_number, password=None,role=None,department=None,created_by=None):
+  def create_user(self,email,username ,phone_number, password=None,role=None,department=None,user_id=None,created_by=None):
     if not email:
       raise ValueError('Users must have an email address')
 
@@ -20,6 +20,7 @@ class AccountManager(BaseUserManager):
       username  = username,email=email,
       phone_number=phone_number,role=role,
       department=department,
+      user_id = user_id,
       created_by=created_by
     )
     user.set_password(password)
@@ -41,6 +42,7 @@ class Accounts(AbstractBaseUser, PermissionsMixin):
 
    
     username =   models.CharField(max_length=120,unique=True)
+    user_id = models.CharField(max_length=120,null=True)
     email = models.EmailField(max_length=255,unique=True)
     phone_number =   models.CharField(max_length=50, unique=True)
     created_by =  models.ForeignKey(AUTH_USER_MODEL,on_delete=models.CASCADE,null=True )

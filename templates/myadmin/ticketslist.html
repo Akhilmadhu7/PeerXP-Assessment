@@ -10,9 +10,9 @@
 <!-- component -->
 <section class="bg-sky-50 min-h-screen flex flex-col px-20 pt-20" >
     <div>
-        <a href="create-user">
+        <a href="create-ticket">
             <button class="bg-blue-500 text-white p-3 rouned-md">
-                Create New User
+                Create Ticket
             </button>
         </a>
     </div>
@@ -28,20 +28,22 @@
             <table class="w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5">
                 <thead class="text-white">
                     <tr class="bg-teal-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
-                        <th class="p-3 text-center">Sl.No</th>
-                        <th class="p-3 text-center">Name</th>
-                        <th class="p-3 text-center">Email</th>
-                        <th class="p-3 text-center">Mobile Number</th>
+                        <th class="p-3 text-center">Ticket ID</th>
+                        <th class="p-3 text-center">Subject</th>
+                        <th class="p-3 text-center">Priority</th>
+                        <th class="p-3 text-center">Created at</th>
+                        <th class="p-3 text-center" width="110px">Delete</th>
                     </tr>
                 </thead>
                 <tbody class="flex-1 sm:flex-none">
                     
-                    {% for u in users %}   
+                    {% for d in data %}   
                     <tr class="flex flex-col flex-no wrap  text-center sm:table-row mb-2 sm:mb-0">
-                        <td class="border-grey-light border hover:bg-gray-100 p-3">{{forloop.counter}}</td>
-                        <td class="border-grey-light border hover:bg-gray-100 p-3">{{u.username}}</td>
-                        <td class="border-grey-light border hover:bg-gray-100 p-3 truncate">{{u.email}}</td>
-                        <td class="border-grey-light border hover:bg-gray-100 p-3 truncate">{{u.phone_number}}</td>
+                        <td class="border-grey-light border hover:bg-gray-100 p-3">{{d.id}}</td>
+                        <td class="border-grey-light border hover:bg-gray-100 p-3">{{d.subject}}</td>
+                        <td class="border-grey-light border hover:bg-gray-100 p-3 truncate">{{d.description}}</td>
+                        <td class="border-grey-light border hover:bg-gray-100 p-3 truncate">{{d.created_at}}</td>
+                        <td class="border-grey-light border hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer"><a href="{% url 'delete-ticket' d.id %}" ><button type="button"  onclick="return confirm('Do you want to delete?')">Delete</button></a></td>
                     </tr>
                     {% endfor %}
     
@@ -52,5 +54,3 @@
     </section>
     
 {% endblock content %}
-    
-    
